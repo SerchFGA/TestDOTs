@@ -1,29 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public partial class PlayerInput_System : SystemBase
+namespace SFGA.Test
 {
-    protected override void OnCreate()
+    //Set Inputs for player movement & shooting
+    public partial class PlayerInput_System : SystemBase    
     {
-        EntityManager.AddComponent<ForwardPlayerInput_Component>(SystemHandle);
-
-    }
-
-    protected override void OnUpdate()
-    {
-        var forwardImput = new ForwardPlayerInput_Component
+        protected override void OnCreate()
         {
-            up = Input.GetKey(KeyCode.W),
-            right = Input.GetKey(KeyCode.D),
-            left = Input.GetKey(KeyCode.A),
+            EntityManager.AddComponent<ForwardPlayerInput_Component>(SystemHandle);
 
-            space = Input.GetKey(KeyCode.Space)
-        };
+        }
+        protected override void OnUpdate()
+        {
+            var forwardImput = new ForwardPlayerInput_Component
+            {
+                up = Input.GetKey(KeyCode.W),
+                right = Input.GetKey(KeyCode.D),
+                left = Input.GetKey(KeyCode.A),
 
-        EntityManager.SetComponentData(SystemHandle, forwardImput);
+                space = Input.GetKey(KeyCode.Space)
+            };
 
-        
+            EntityManager.SetComponentData(SystemHandle, forwardImput);
+
+
+        }
     }
 }
+

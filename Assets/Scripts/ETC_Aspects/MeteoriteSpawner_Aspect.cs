@@ -52,8 +52,8 @@ public readonly partial struct MeteoriteSpawner_Aspect : IAspect
     public Entity s_meteoritePrefab => _meteoriteSpawner.ValueRO.s_meteoritePrefab;
     public bool isSpawningAgain
     {
-        get => _seconSpawner.ValueRO.isSpawningAgain;
-        set => _seconSpawner.ValueRW.isSpawningAgain = value;
+        get => _seconSpawner.ValueRO.isSpawning2ndTime;
+        set => _seconSpawner.ValueRW.isSpawning2ndTime = value;
     }
 
     public float3 posSpawningAgain

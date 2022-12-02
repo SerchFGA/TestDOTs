@@ -20,7 +20,7 @@ public struct MeteoriteSpawner_Component : IComponentData
 public struct secondSpawner_Component : IComponentData
 {
     
-    public bool isSpawningAgain;
+    public bool isSpawning2ndTime;
     public float3 posSpawningAgain;
 }
 

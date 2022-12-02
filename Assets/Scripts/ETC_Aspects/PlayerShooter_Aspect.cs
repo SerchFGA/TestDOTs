@@ -13,7 +13,8 @@ public readonly partial struct PlayerShooter_Aspect : IAspect
     private readonly TransformAspect _transformAspect;
     private readonly RefRO<PlayerShooter_Component> _playerShooter;
     private readonly RefRW<PlayerShooterTimer> _playerShooterTimer;
-    //private readonly RefRW<AudioSource> _audioSource;
+    private readonly RefRW<isMovingPlayer_Component> _isMovingPlayer;
+    
 
     public float PlayerShooterTimer
     {
@@ -36,6 +37,10 @@ public readonly partial struct PlayerShooter_Aspect : IAspect
 
         return new float3(1, 0, 1 + 1.1f);
     }
-
+    public bool isMovingPlayer
+    {
+        get => _isMovingPlayer.ValueRO.isMoving;
+        set => _isMovingPlayer.ValueRW.isMoving = value;
+    }
 
 }

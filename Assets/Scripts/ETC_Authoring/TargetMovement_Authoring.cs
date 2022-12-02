@@ -10,8 +10,6 @@ public class TargetMovement_Authoring : MonoBehaviour
 
 }
 
-
-
 public class Targetmovement : Baker<TargetMovement_Authoring>
 {
     

@@ -36,7 +36,7 @@ public class MeteoriteSpawnerBaker : Baker<MeteoriteSpawner_Authoring>
 
         AddComponent(new secondSpawner_Component
         {
-            isSpawningAgain = authoring.isSpawningAgain,
+            isSpawning2ndTime = authoring.isSpawningAgain,
             posSpawningAgain = authoring.posSpawningAgain,
 
         });

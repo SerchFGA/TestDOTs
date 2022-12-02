@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meteoritePrefab: {fileID: 657495008085361779, guid: 96ad68218f514954a81b975193996c1a, type: 3}
-  meteoriteSpawnerRate: 3.5
+  meteoriteSpawnerRate: 4
   meteoriteSpanerTimer: 0
   xLimit: 25
   zLimit: 14

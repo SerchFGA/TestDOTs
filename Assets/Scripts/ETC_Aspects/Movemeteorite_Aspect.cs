@@ -75,8 +75,5 @@ public readonly partial struct Movemeteorite_Aspect : IAspect
             0, 
             randomComponent.ValueRW.random.NextFloat(-1, 1));
     }
-    public void addPoints()
-    {
-        GameManager_Script.Instance.addPoints();
-    }
+
 }

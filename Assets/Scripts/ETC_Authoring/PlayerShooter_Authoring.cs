@@ -7,9 +7,11 @@ public class PlayerShooter_Authoring : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject spawnPoint;
-    //public Transform spawnPointTransform;
+
 
     public float spawnRate;
+
+    public bool isMoving;
 }
 
 public class MPlayerShooterBaker : Baker<PlayerShooter_Authoring>
@@ -26,5 +28,10 @@ public class MPlayerShooterBaker : Baker<PlayerShooter_Authoring>
         });
 
         AddComponent<PlayerShooterTimer>();
+
+        AddComponent(new isMovingPlayer_Component
+        {
+            isMoving = authoring.isMoving
+        });
     }
 }

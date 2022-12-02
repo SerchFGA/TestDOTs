@@ -7,7 +7,7 @@ public struct PlayerShooter_Component : IComponentData
 {
     public Entity bullet;
     public Entity spawnPoint;
-    //public TransformAuthoring spawnPointTransform; 
+ 
     public float spawnRate;
 }
 
@@ -15,3 +15,9 @@ public struct PlayerShooterTimer : IComponentData
 {
     public float Value;
 }
+
+public struct isMovingPlayer_Component : IComponentData
+{
+    public bool isMoving;
+}
+

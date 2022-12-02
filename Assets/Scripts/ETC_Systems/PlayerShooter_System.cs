@@ -1,70 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
-using Unity.Collections;
 using Unity.Mathematics;
-using Unity.Physics.Aspects;
 using Unity.Transforms;
 
-public partial class PlayerShooter_System : SystemBase
+namespace SFGA.Test
 {
-    
-
-    protected override void OnCreate()
+    public partial class PlayerShooter_System : SystemBase
     {
-        base.OnCreate();
-        
-    }
-    protected override void OnUpdate()
-    {
-        EntityQuery bulletsEntityQuery = EntityManager.CreateEntityQuery(typeof(BulletTag));
-
-        
-        var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
-        //var bulletEntity = SystemAPI.GetSingletonEntity<BulletTag>();
-        //var bullet = SystemAPI.GetAspectRW<Bullet_Aspect>(bulletEntity);
-
-        var playerShooter = SystemAPI.GetAspectRW<PlayerShooter_Aspect>(playerEntity);
-        var playerTransform = SystemAPI.GetAspectRW<TransformAspect>(playerEntity);
-        
-
-        EntityCommandBuffer ECB = SystemAPI.GetSingleton<BeginFixedStepSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(World.Unmanaged);
-
-        //Shoot
-        playerShooter.PlayerShooterTimer -= SystemAPI.Time.DeltaTime;
-
-        if (Input.GetKey(KeyCode.Space) && playerShooter.TimeToShoot)
+        protected override void OnUpdate()
         {
-            
-            playerShooter.PlayerShooterTimer = playerShooter.shootRate;
-            Entity spawnBullet = ECB.Instantiate(playerShooter.bulletPrefab);
+            //Get all bullets
+            EntityQuery bulletsEntityQuery = EntityManager.CreateEntityQuery(typeof(BulletTag));
 
-            GameManager_Script.Instance.shooting();
+            //Get player Entity
+            var playerEntity = SystemAPI.GetSingletonEntity<PlayerTag>();
 
-            var spawnPointTransform = SystemAPI.GetAspectRW<TransformAspect>(playerShooter.spawnPointEntity);
-            
+            //Get Aspect from Entity
+            var playerShooter = SystemAPI.GetAspectRW<PlayerShooter_Aspect>(playerEntity);
+            var playerTransform = SystemAPI.GetAspectRW<TransformAspect>(playerEntity);
 
-            Vector3 directionBullet = (playerTransform.Position - spawnPointTransform.Position);
-            float3 dir = directionBullet.normalized;
+            EntityCommandBuffer ECB = SystemAPI.GetSingleton<BeginFixedStepSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(World.Unmanaged);
 
-            ECB.SetComponent(spawnBullet, new Bullet_Component
+            //Shoot rate
+            playerShooter.PlayerShooterTimer -= SystemAPI.Time.DeltaTime;
+
+            //Check when to shoot
+            if (Input.GetKey(KeyCode.Space) && playerShooter.TimeToShoot)
             {
-                bulletDir= -dir
-            });
+                playerShooter.PlayerShooterTimer = playerShooter.shootRate;
 
-            ECB.SetComponent(spawnBullet, new Translation
-            {
-                Value = spawnPointTransform.Position
-            });
+                //Instantiate Bullet
+                Entity spawnBullet = ECB.Instantiate(playerShooter.bulletPrefab);
 
-            ECB.SetComponent(spawnBullet, new Rotation
-            {
-                Value = spawnPointTransform.Rotation
-            });
+                //Play sound
+                GameManager_Script.Instance.shooting();
 
-            
+                var spawnPointTransform = SystemAPI.GetAspectRW<TransformAspect>(playerShooter.spawnPointEntity);
+                Vector3 directionBullet = (playerTransform.Position - spawnPointTransform.Position);
+                float3 dir = directionBullet.normalized;
+
+                //Set Bullet components values
+                ECB.SetComponent(spawnBullet, new Bullet_Component
+                {
+                    bulletDir = -dir
+                });
+
+                ECB.SetComponent(spawnBullet, new Translation
+                {
+                    Value = spawnPointTransform.Position
+                });
+
+                ECB.SetComponent(spawnBullet, new Rotation
+                {
+                    Value = spawnPointTransform.Rotation
+                });
+
+
+            }
+
         }
-
     }
 }
+
