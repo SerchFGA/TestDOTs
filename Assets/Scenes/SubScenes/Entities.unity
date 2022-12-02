@@ -157,9 +157,15 @@ MonoBehaviour:
   meteoriteSpanerTimer: 0
   xLimit: 25
   zLimit: 14
-  s_meteoritePrefab: {fileID: 657495008085361779, guid: a412c36ef5d92c84ca505debc87eebde, type: 3}
-  isSpawningAgain: 0
-  posSpawningAgain:
+  m_meteoritePrefab: {fileID: 657495008085361779, guid: a412c36ef5d92c84ca505debc87eebde, type: 3}
+  isSpawning2ndAgain: 0
+  posSpawn2ndAgain:
+    x: 0
+    y: 0
+    z: 0
+  s_meteoritePrefab: {fileID: 657495008085361779, guid: 06dbc23eb00833b4fbe2728ab806d055, type: 3}
+  isSpawning3ndAgain: 0
+  posSpawn3ThAgain:
     x: 0
     y: 0
     z: 0

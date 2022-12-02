@@ -6,6 +6,7 @@ using Unity.Mathematics;
 
 public class MeteoriteSpawner_Authoring : MonoBehaviour
 {
+
     public GameObject meteoritePrefab;
     public float meteoriteSpawnerRate;
     public float meteoriteSpanerTimer;
@@ -13,11 +14,13 @@ public class MeteoriteSpawner_Authoring : MonoBehaviour
     public float xLimit;
     public float zLimit;
 
+    public GameObject m_meteoritePrefab;
+    public bool isSpawning2ndAgain;
+    public float3 posSpawn2ndAgain;
+
     public GameObject s_meteoritePrefab;
-    public bool isSpawningAgain;
-    public float3 posSpawningAgain;
-
-
+    public bool isSpawning3ndAgain;
+    public float3 posSpawn3ThAgain;
 }
 
 public class MeteoriteSpawnerBaker : Baker<MeteoriteSpawner_Authoring>
@@ -30,15 +33,21 @@ public class MeteoriteSpawnerBaker : Baker<MeteoriteSpawner_Authoring>
             meteoriteSpawnRate = authoring.meteoriteSpawnerRate,
             xLimit = authoring.xLimit,
             zLimit = authoring.zLimit,
+            m_meteoritePrefab = GetEntity(authoring.m_meteoritePrefab),
             s_meteoritePrefab = GetEntity(authoring.s_meteoritePrefab),
-
         });
 
         AddComponent(new secondSpawner_Component
         {
-            isSpawning2ndTime = authoring.isSpawningAgain,
-            posSpawningAgain = authoring.posSpawningAgain,
+            isSpawning2ndTime = authoring.isSpawning2ndAgain,
+            posSpawning2bdAgain = authoring.posSpawn2ndAgain,
 
+        });
+
+        AddComponent(new thirdSpawner_Component
+        {
+            isSpawning3thTime = authoring.isSpawning3ndAgain,
+            posSpawning3thAgain = authoring.posSpawn3ThAgain,
         });
 
         AddComponent<MeteoriteSpawnTimer>();

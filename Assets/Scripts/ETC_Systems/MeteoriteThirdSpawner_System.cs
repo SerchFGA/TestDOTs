@@ -4,11 +4,11 @@ using Unity.Transforms;
 namespace SFGA.Test
 {
     //Meteorite Spawner System
-    public partial class MeteoriteSecondSpawner_System : SystemBase
+    public partial class MeteoriteThirdSpawner_System : SystemBase
     {
         protected override void OnUpdate()
         {
-            EntityQuery meteoriteEntityQuerySecond = EntityManager.CreateEntityQuery(typeof(MediumMetTag));
+            EntityQuery meteoriteEntityQuerySecond = EntityManager.CreateEntityQuery(typeof(SmallMetTag));
             var spawnerEntity = SystemAPI.GetSingletonEntity<MeteoriteSpawner_Component>();
 
             RefRW<RandomComponent> randomComponent = SystemAPI.GetSingletonRW<RandomComponent>();
@@ -17,19 +17,18 @@ namespace SFGA.Test
             EntityCommandBuffer ETC2 = SystemAPI.GetSingleton<BeginFixedStepSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(World.Unmanaged);
 
             //Check spawn time
-            meteorite.MeteoriteSpawnTimer -= SystemAPI.Time.DeltaTime;
-            if (!meteorite.isSpawn2ndTime)
+            if (!meteorite.isSpawn3thTime)
                 return;
             else
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    Entity spawnedEntity = ETC2.Instantiate(meteorite.m_meteoritePrefab);
+                    Entity spawnedEntity = ETC2.Instantiate(meteorite.s_meteoritePrefab);
 
                     //Set components value from spawnedEntity
                     ETC2.SetComponent(spawnedEntity, new Translation
                     {
-                        Value = meteorite.posSpawning2ndAgain
+                        Value = meteorite.posSpawning3tnAgain
                     });
 
                     ETC2.SetComponent(spawnedEntity, new TargetMovement
@@ -38,7 +37,7 @@ namespace SFGA.Test
                     });
 
                 }
-                meteorite.isSpawn2ndTime = false;
+                meteorite.isSpawn3thTime = false;
             }
 
         }

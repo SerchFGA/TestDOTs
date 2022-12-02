@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
+
 
 public struct MeteoriteSpawner_Component : IComponentData
 {
@@ -13,15 +11,21 @@ public struct MeteoriteSpawner_Component : IComponentData
     public float zLimit;
 
 
+    public Entity m_meteoritePrefab;
     public Entity s_meteoritePrefab;
-
 }
 
 public struct secondSpawner_Component : IComponentData
 {
     
     public bool isSpawning2ndTime;
-    public float3 posSpawningAgain;
+    public float3 posSpawning2bdAgain;
+}
+
+public struct thirdSpawner_Component : IComponentData
+{
+    public bool isSpawning3thTime;
+    public float3 posSpawning3thAgain;
 }
 
 public struct MeteoriteSpawnTimer : IComponentData
