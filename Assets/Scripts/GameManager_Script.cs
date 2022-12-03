@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Entities;
 using UnityEngine.UIElements;
 using Unity.Entities.UniversalDelegates;
+using UnityEngine.SceneManagement;
 
 namespace SFGA.Test
 {
@@ -43,6 +44,7 @@ namespace SFGA.Test
                 livesArray[i].SetActive(true);
             }
             Lives = livesArray.Length;
+            gameOverPanel.SetActive(false);
         }
         private void Update()
         {
@@ -72,6 +74,7 @@ namespace SFGA.Test
         public void GameOver()
         {
             Debug.Log("GAME OVER");
+            gameOverPanel.SetActive(true);
             Time.timeScale = 0;
             isGameOver = true;
         }
@@ -114,7 +117,10 @@ namespace SFGA.Test
             Debug.Log("Destroy Metorite");
         }
 
-
+        public void playAgain()
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
 

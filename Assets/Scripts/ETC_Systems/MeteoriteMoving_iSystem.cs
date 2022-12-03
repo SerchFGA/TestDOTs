@@ -32,7 +32,6 @@ namespace SFGA.Test
             SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();
 
 
-
             //Creat job to detect collision with meteorites/player/bullets
             var job = new BulletHitJob()
             {
@@ -193,7 +192,7 @@ namespace SFGA.Test
             if (!Entity.Null.Equals(mediumMet) && !Entity.Null.Equals(bullet))
             {
                 UnityEngine.Debug.Log("Destruyo Asteroide mediano");
-                shouldAddTriplePoints.Value = true;
+                shouldAddDoublePoints.Value = true;
                 posMeteorite.Value = mediumMet;
                 DesEntity(mediumMet);
                 DesEntity(bullet);
@@ -202,7 +201,7 @@ namespace SFGA.Test
             if (!Entity.Null.Equals(smallMet) && !Entity.Null.Equals(bullet))
             {
                 UnityEngine.Debug.Log("Destruyo Asteroide pequeño");
-                shouldAddDoublePoints.Value = true;
+                shouldAddTriplePoints.Value = true;
                 DesEntity(smallMet);
                 DesEntity(bullet);
             }

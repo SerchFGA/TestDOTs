@@ -22,7 +22,7 @@ namespace SFGA.Test
                 return;
             else
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     Entity spawnedEntity = ETC2.Instantiate(meteorite.m_meteoritePrefab);
 

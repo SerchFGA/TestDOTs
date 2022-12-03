@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/SubScenes/PlayerSybscene.unity
+    guid: cfceb7612d3d0874783bf233cef33337
+  - enabled: 1
+    path: Assets/Scenes/SubScenes/BordersSubscene.unity
+    guid: c268a15a7bcc83f4cbb9b2a7bcb13edf
+  - enabled: 1
+    path: Assets/Scenes/SubScenes/Entities.unity
+    guid: 3ea3c32a1d899cb4db41d79d07088f0e
   m_configObjects: {}
