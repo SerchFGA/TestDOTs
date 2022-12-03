@@ -11,3 +11,4 @@ A - Rotate Left
 D - Rotate Right
 SPACE - Shoot
 
+Made by: Sergio Glez.
