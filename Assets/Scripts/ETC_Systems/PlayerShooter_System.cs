@@ -2,11 +2,13 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using Unity.Scenes;
 
 namespace SFGA.Test
 {
     public partial class PlayerShooter_System : SystemBase
     {
+        
         protected override void OnUpdate()
         {
             //Get all bullets

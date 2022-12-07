@@ -6,6 +6,7 @@ using Unity.Entities;
 using UnityEngine.UIElements;
 using Unity.Entities.UniversalDelegates;
 using UnityEngine.SceneManagement;
+using Unity.Scenes;
 
 namespace SFGA.Test
 {
@@ -30,6 +31,8 @@ namespace SFGA.Test
         public AudioSource spaceShipAudio;
         public AudioSource loseLiveAudio;
 
+        
+
         // Start is called before the first frame update
         void Awake()
         {
@@ -45,6 +48,7 @@ namespace SFGA.Test
             }
             Lives = livesArray.Length;
             gameOverPanel.SetActive(false);
+            
         }
         private void Update()
         {
