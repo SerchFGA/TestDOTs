@@ -1,4 +1,4 @@
-# TestAmberAsteroids
+# TestDOTs
  UnityGameTest
 
 USING: 
